@@ -1,7 +1,8 @@
 ---
-- name: Grant access to authorized hosts
+- name: Set authorized keys
   authorized_key:
     user: '{{ item.user }}'
+    key: '{{ item.keys | join("\n") }}'
+    exclusive: yes
     state: present
-    key: '{{ item.key }}'
-  with_items: '{{ ssh_authorized_hosts }}'
+  with_items: '{{ ssh_authorized_keys }}'
