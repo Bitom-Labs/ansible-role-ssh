@@ -1,0 +1,7 @@
+---
+- name: Grant access to authorized hosts
+  authorized_key:
+    user: '{{ item.user }}'
+    state: present
+    key: '{{ item.key }}'
+  with_items: '{{ ssh_authorized_hosts }}'
