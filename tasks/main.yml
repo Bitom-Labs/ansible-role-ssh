@@ -2,7 +2,7 @@
 - name: Set authorized keys
   authorized_key:
     user: '{{ item.user }}'
-    key: '{{ item.keys | join("\n") }}'
+    key: '{{ item.authorized_keys }}'
     exclusive: yes
     state: present
   with_items: '{{ ssh_authorized_keys }}'
